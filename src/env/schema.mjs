@@ -25,6 +25,9 @@ export const serverEnv = {
  */
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  NEXT_PUBLIC_APP_CODE: z.string(),
+  NEXT_PUBLIC_APP_NAME: z.string(),
+  NEXT_PUBLIC_APP_TEXT: z.string(),
 });
 
 /**
@@ -35,4 +38,7 @@ export const clientSchema = z.object({
  */
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+  NEXT_PUBLIC_APP_CODE: process.env.NEXT_PUBLIC_APP_CODE,
+  NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
+  NEXT_PUBLIC_APP_TEXT: process.env.NEXT_PUBLIC_APP_TEXT,
 };

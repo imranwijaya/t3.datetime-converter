@@ -1,0 +1,9 @@
+{
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "tailwindCSS.experimental.classRegex": [
+    ["ClassName \\=([^;]*);", "'([^']*)'"],
+    ["ClassName \\=([^;]*);", "\"([^\"]*)\""],
+    ["ClassName \\=([^;]*);", "\\`([^\\`]*)\\`"]
+  ]
+}
