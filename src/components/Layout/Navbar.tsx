@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
 import { ThemeContext } from "@components/ThemeContext";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { env } from "@env/client.mjs";
+import { MoonIcon, SunIcon } from "@heroicons/react/20/solid";
 
 const NEXT_PUBLIC_APP_NAME = env.NEXT_PUBLIC_APP_NAME;
 
@@ -26,14 +26,20 @@ const Navbar: NextPage = () => {
               className="tooltip tooltip-left"
               data-tip={`switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              <label tabIndex={1} className="swap-rotate swap btn-ghost btn">
+              <label
+                htmlFor="theme-toggler"
+                className="swap-rotate swap btn-ghost btn"
+              >
                 <input
+                  id="theme-toggler"
                   type="checkbox"
                   onChange={themeCheckedHandler}
                   checked={theme === "dark"}
+                  aria-label="theme-toggler"
+                  aria-labelledby="theme-toggler"
                 />
-                <SunIcon className="swap-on h-5 w-5 fill-current" />
-                <MoonIcon className="swap-off h-5 w-5 fill-current" />
+                <SunIcon className="swap-on h-5 w-5" />
+                <MoonIcon className="swap-off h-5 w-5" />
               </label>
             </div>
           </div>

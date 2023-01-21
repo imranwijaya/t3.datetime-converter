@@ -1,18 +1,61 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
+import dynamic from "next/dynamic";
 import { GlobalContextProvider } from "@components/GlobalContext";
 import { ThemeContext } from "@components/ThemeContext";
 import Layout from "@components/Layout";
 import BrowserTime from "@components/Browser/Time";
 import BrowserTimezone from "@components/Browser/Timezone";
 import BrowserLanguage from "@components/Browser/Language";
-import TimezoneFrom from "@components/Timezone/From";
-import TimezoneTo from "@components/Timezone/To";
 import DatetimeFrom from "@components/Datetime/From";
 import DatetimeTo from "@components/Datetime/To";
-import Locale from "@components/Locale";
 import DatetimeFormat from "@components/Datetime/Format";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
+
+const DynamicLocale = dynamic(() => import("../components/Locale/index"), {
+  loading: () => (
+    <div className="w-full">
+      <div className="relative">
+        <div className="relative">
+          <button className="btn-outline btn-disabled btn-block btn-sm btn gap-1">
+            Loading...
+          </button>
+        </div>
+      </div>
+    </div>
+  ),
+});
+
+const DynamicTimezoneFrom = dynamic(
+  () => import("../components/Timezone/From"),
+  {
+    loading: () => (
+      <div className="w-full">
+        <div className="relative">
+          <div className="relative">
+            <button className="btn-outline btn-disabled btn-block btn-sm btn gap-1">
+              Loading...
+            </button>
+          </div>
+        </div>
+      </div>
+    ),
+  }
+);
+
+const DynamicTimezoneTo = dynamic(() => import("../components/Timezone/To"), {
+  loading: () => (
+    <div className="w-full">
+      <div className="relative">
+        <div className="relative">
+          <button className="btn-outline btn-disabled btn-block btn-sm btn gap-1">
+            Loading...
+          </button>
+        </div>
+      </div>
+    </div>
+  ),
+});
 
 const Home: NextPage = () => {
   const title = "Online Datetime Converter";
@@ -52,7 +95,7 @@ const Home: NextPage = () => {
         <GlobalContextProvider>
           <div className="grid grid-cols-11 gap-2 md:gap-0">
             <div className="col-span-full px-4 md:col-span-5">
-              <Locale />
+              <DynamicLocale />
             </div>
             <div className="col-span-full md:col-span-1"></div>
             <div className="col-span-full px-4 md:col-span-5">
@@ -68,10 +111,11 @@ const Home: NextPage = () => {
               >
                 <div className="card-body">
                   <div>
-                    <TimezoneFrom />
+                    <DynamicTimezoneFrom />
                   </div>
                   <div className="stat-value whitespace-pre-wrap text-lg">
                     <DatetimeFrom />
+                    {/* <DynamicDatetimeFrom /> */}
                   </div>
                 </div>
               </div>
@@ -94,10 +138,12 @@ const Home: NextPage = () => {
               >
                 <div className="card-body">
                   <div>
-                    <TimezoneTo />
+                    {/* <TimezoneTo /> */}
+                    <DynamicTimezoneTo />
                   </div>
                   <div className="stat-value whitespace-pre-wrap text-lg">
                     <DatetimeTo />
+                    {/* <DynamicDatetimeTo /> */}
                   </div>
                 </div>
               </div>
